@@ -1,0 +1,10 @@
+.git
+.env
+*.zip
+node_modules/
+dist/
+deploy/
+cv-source/
+README.md
+docker-compose*.yml
+Caddyfile

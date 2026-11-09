@@ -1,0 +1,12 @@
+# Option B: HTTP only (quick test through the VPS IP, or behind a proxy you already run).
+#   docker compose up -d --build
+services:
+  web:
+    build: .
+    image: intan-portfolio:latest
+    container_name: intan-portfolio
+    restart: unless-stopped
+    ports:
+      - "${HTTP_PORT:-80}:80"
+    environment:
+      SITE_URL: ${SITE_URL:-}

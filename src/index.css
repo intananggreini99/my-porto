@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Design tokens: one dark theme built from three core hues
+   (gray, blue, gold) and their tints and shades.
+   ========================================================================== */
+@theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-gray-950: #101216;
+  --color-gray-900: #151820;
+  --color-gray-850: #1b1f27;
+  --color-gray-800: #232832;
+  --color-gray-700: #313844;
+  --color-gray-500: #6e7889;
+  --color-gray-300: #bac2ce;
+  --color-gray-100: #eef1f5;
+
+  --color-blue-950: #0a1430;
+  --color-blue-900: #0f1f4d;
+  --color-blue-800: #16307a;
+  --color-blue-700: #1e42a8;
+  --color-blue-600: #2563eb;
+  --color-blue-500: #3b82f6;
+  --color-blue-400: #6aa5ff;
+  --color-blue-200: #c3daff;
+
+  --color-gold-700: #9c7410;
+  --color-gold-600: #c9961c;
+  --color-gold-500: #e0ae2e;
+  --color-gold-400: #f2c14e;
+  --color-gold-300: #f7d47f;
+  --color-gold-100: #fcf0cf;
+
+  /* roles */
+  --color-text: #eef1f5;
+  --color-muted: rgb(238 241 245 / 0.74);
+  --color-faint: rgb(238 241 245 / 0.56);
+  --color-line: rgb(186 194 206 / 0.13);
+  --color-surface: rgb(255 255 255 / 0.045);
+  --color-surface-strong: rgb(255 255 255 / 0.08);
+  --color-scrim: rgb(10 20 48 / 0.84);
+  --color-overlay: rgb(8 10 14 / 0.86);
+  --color-danger: #ff8a7a;
+
+  --font-sans: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-accent: "Playfair Display", Georgia, "Times New Roman", serif;
+
+  --radius-card: 10px;
+  --radius-tile: 6px;
+
+  --ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --animate-spin-slow: spin 18s linear infinite;
+  --animate-fade: fade 0.3s var(--ease-soft);
+  --animate-rise: rise 0.35s var(--ease-soft);
+
+  /* extra-small phones (e.g. 360 px Android) get their own step */
+  --breakpoint-xs: 25rem;
+
+  @keyframes fade {
+    from { opacity: 0; }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(18px); }
+  }
+}
+
+/* ---------- Fonts (self-hosted, SIL OFL) ---------- */
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 400; font-display: swap; src: url("/assets/fonts/figtree-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 500; font-display: swap; src: url("/assets/fonts/figtree-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 600; font-display: swap; src: url("/assets/fonts/figtree-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 700; font-display: swap; src: url("/assets/fonts/figtree-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Playfair Display"; font-style: italic; font-weight: 600; font-display: swap; src: url("/assets/fonts/playfair-display-latin-600-italic.woff2") format("woff2"); }
+
+/* ---------- Base ---------- */
+@layer base {
+  :root {
+    color-scheme: dark;
+    --header-h: 76px;
+    --gutter: 18px;
+    --rail-w: 64px;
+  }
+  @media (width >= 48rem) { :root { --gutter: 24px; } }
+  @media (width >= 80rem) { :root { --header-h: 88px; } }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 16px);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-gray-900 font-sans text-[15.5px] leading-[1.625] font-medium text-text antialiased md:text-base;
+    overflow-x: hidden;
+  }
+  /* contour-line texture */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: rgb(106 165 255 / 0.06);
+    -webkit-mask: url("/assets/img/bg-lines.svg") center / cover no-repeat;
+    mask: url("/assets/img/bg-lines.svg") center / cover no-repeat;
+  }
+  /* blue, gold and slate light */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+      radial-gradient(1100px 720px at 95% -12%, rgb(37 99 235 / 0.26), transparent 62%),
+      radial-gradient(800px 560px at 55% 45%, rgb(110 120 137 / 0.08), transparent 70%),
+      radial-gradient(900px 620px at -12% 112%, rgb(242 193 78 / 0.11), transparent 60%);
+  }
+  body.is-locked { overflow: hidden; }
+
+  :focus-visible {
+    outline: 2px solid var(--color-blue-400);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  button { cursor: pointer; }
+  img { max-width: 100%; }
+}
+
+/* ---------- Small shared pieces that utilities cannot express ---------- */
+@layer components {
+  /* gold italic accent word with a gold underline */
+  .accent {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-weight: 600;
+    padding-right: 0.06em;
+    background: linear-gradient(120deg, var(--color-gold-300) 0%, var(--color-gold-400) 45%, var(--color-gold-600) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: underline;
+    text-decoration-color: var(--color-gold-500);
+    text-decoration-thickness: 0.055em;
+    text-underline-offset: 0.12em;
+  }
+
+  /* a button that makes its whole card clickable */
+  .stretched::after { content: ""; position: absolute; inset: 0; z-index: 2; }
+  .stretched:focus-visible { outline: none; }
+
+  /* back-to-top progress ring */
+  .ring-progress circle { fill: none; stroke-width: 2; }
+
+  /* thin scrollbar for the gallery thumbnails */
+  .thin-scroll { scrollbar-width: thin; scrollbar-color: var(--color-gray-700) transparent; }
+}
+
+/* ---------- Preloader (lives in index.html, hidden once React has mounted) ---------- */
+.preloader {
+  position: fixed; inset: 0; z-index: 400;
+  display: grid; place-items: center;
+  background: var(--color-gray-900);
+  color: var(--color-gold-400);
+  transition: opacity 0.5s var(--ease-soft), visibility 0.5s;
+}
+.preloader svg { width: 72px; height: 72px; animation: spin 1.1s linear infinite; }
+.preloader.is-done { opacity: 0; visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  .no-print, .preloader { display: none !important; }
+  body::before, body::after { display: none; }
+}

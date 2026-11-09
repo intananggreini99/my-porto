@@ -1,0 +1,35 @@
+# Option A (recommended): your own domain with automatic HTTPS (Let's Encrypt via Caddy).
+#   1. Point your domain's A record to the VPS IP.
+#   2. Fill DOMAIN and SITE_URL in .env.
+#   3. docker compose -f docker-compose.https.yml up -d --build
+services:
+  web:
+    build: .
+    image: intan-portfolio:latest
+    container_name: intan-portfolio
+    restart: unless-stopped
+    environment:
+      SITE_URL: ${SITE_URL:-}
+    expose:
+      - "80"
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: intan-portfolio-caddy
+    restart: unless-stopped
+    depends_on:
+      - web
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      DOMAIN: ${DOMAIN:?Set DOMAIN in .env, for example DOMAIN=intan.my.id}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

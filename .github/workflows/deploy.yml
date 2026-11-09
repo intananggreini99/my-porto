@@ -1,0 +1,69 @@
+name: Deploy ke GitHub Pages
+
+# Setiap push ke cabang main membangun website lalu menayangkannya.
+# Bisa juga dijalankan manual: tab Actions > Deploy ke GitHub Pages > Run workflow.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Hanya satu deploy berjalan sekaligus; deploy lama dibatalkan kalau ada yang baru.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  # Alamat publik website. Ganti baris ini kalau domain Anda berubah.
+  SITE_URL: https://intananggreini99.web.id
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ambil kode
+        uses: actions/checkout@v6
+
+      - name: Pasang Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Pasang dependensi
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Isi alamat website ke tag SEO
+        run: |
+          for f in dist/index.html dist/robots.txt dist/sitemap.xml; do
+            sed -i "s#__SITE_URL__#${SITE_URL}#g" "$f"
+          done
+
+      - name: Pastikan tidak ada placeholder tersisa
+        run: |
+          if grep -rq "__SITE_URL__" dist; then
+            echo "Masih ada __SITE_URL__ di dist"; exit 1
+          fi
+
+      - name: Unggah hasil build
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Tayangkan ke GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
