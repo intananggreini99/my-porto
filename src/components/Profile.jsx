@@ -1,5 +1,5 @@
 import profile from "../data/profile";
-import { asset } from "../lib/utils";
+import { asset, emailLink } from "../lib/utils";
 import { Button, Icon, Socials } from "./ui";
 
 /* Sticky sidebar card on desktop, a wide card on tablets, a centred card on phones. */
@@ -26,7 +26,7 @@ export default function ProfileCard() {
           {profile.intro}
         </p>
         <Socials
-          items={[s.linkedin, s.github, s.instagram, s.whatsapp, { label: "Email", url: `mailto:${profile.email}`, icon: "i-mail" }]}
+          items={[s.linkedin, s.github, s.instagram, s.whatsapp, { label: "Email", url: emailLink(profile.email), icon: "i-mail" }]}
           className="mt-5 md:justify-start xl:justify-center"
         />
         <Button href={asset(profile.cv)} download className="mt-6 w-full xs:w-auto">

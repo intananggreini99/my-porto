@@ -1,5 +1,5 @@
 import { useDialog } from "../hooks/useDialog";
-import { cn, NAV } from "../lib/utils";
+import { cn, emailLink, NAV, newTabProps } from "../lib/utils";
 import profile from "../data/profile";
 import { Button, Icon, Logo, Socials } from "./ui";
 
@@ -145,7 +145,7 @@ export function OffCanvas({ open, active, onClose }) {
           Get in touch <Icon id="i-mail" />
         </Button>
         <div className="mt-7 grid gap-3 text-[15px] text-muted [&_svg]:text-lg [&_svg]:text-blue-400">
-          <a href={`mailto:${profile.email}`} className="inline-flex items-center gap-3 break-all hover:text-text">
+          <a href={emailLink(profile.email)} {...newTabProps(emailLink(profile.email))} className="inline-flex items-center gap-3 break-all hover:text-text">
             <Icon id="i-mail" />{profile.email}
           </a>
           <a href={s.whatsapp.url} target="_blank" rel="noopener" className="inline-flex items-center gap-3 hover:text-text">

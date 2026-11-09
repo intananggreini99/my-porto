@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import profile from "../data/profile";
-import { cn } from "../lib/utils";
+import { cn, emailLink, newTabProps } from "../lib/utils";
 import { Button, cardClass, Icon, IconTile, Reveal, SectionHeader } from "./ui";
 
 const FIELDS = [
@@ -43,8 +43,14 @@ export default function Contact() {
     e.preventDefault();
     if (!validate()) return;
     const { subject, body } = compose();
-    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setStatus("Your email app should open with the message ready to send.");
+    const url = emailLink(profile.email, { subject, body });
+    if (url.startsWith("mailto:")) {
+      window.location.href = url;
+      setStatus("Your email app should open with the message ready to send.");
+    } else {
+      window.open(url, "_blank", "noopener");
+      setStatus("Gmail opened in a new tab with your message ready to send.");
+    }
   };
 
   const sendWhatsApp = () => {
@@ -56,7 +62,7 @@ export default function Contact() {
 
   const s = profile.socials;
   const items = [
-    { href: `mailto:${profile.email}`, icon: "i-mail", label: "Email", value: profile.email },
+    { href: emailLink(profile.email), icon: "i-mail", label: "Email", value: profile.email },
     { href: s.whatsapp.url, icon: "b-whatsapp", label: "WhatsApp", value: profile.whatsapp.label, external: true },
     { href: s.linkedin.url, icon: "b-linkedin", label: "LinkedIn", value: s.linkedin.handle, external: true },
     { href: s.github.url, icon: "b-github", label: "GitHub", value: s.github.handle, external: true },
@@ -103,7 +109,7 @@ export default function Contact() {
             <Button as="button" type="submit">Send by email <Icon id="i-send" /></Button>
             <Button as="button" type="button" variant="ghost" onClick={sendWhatsApp}><Icon id="b-whatsapp" />Send on WhatsApp</Button>
           </div>
-          <p className="mt-3.5 text-sm text-faint">Both buttons open your email or WhatsApp app with the message filled in.</p>
+          <p className="mt-3.5 text-sm text-faint">Both buttons open a ready-to-send message: Gmail on a computer, your email app on a phone, or WhatsApp.</p>
           <p role="status" aria-live="polite" className="mt-1.5 text-sm text-blue-400 empty:hidden">{status}</p>
         </Reveal>
 
@@ -113,7 +119,7 @@ export default function Contact() {
               as="a"
               key={it.label}
               href={it.href}
-              {...(it.external ? { target: "_blank", rel: "noopener" } : {})}
+              {...newTabProps(it.href)}
               className={cn(cardClass, "flex items-center gap-4 px-5 py-5 hover:border-blue-400 md:px-6 md:py-[22px]")}
             >
               <IconTile icon={it.icon} tone={i % 2 === 1 ? "gold" : "blue"} />
