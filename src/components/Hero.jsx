@@ -12,10 +12,7 @@ export default function Hero() {
   const count = data.projects.length;
   return (
     <section id="home" aria-labelledby="hero-title" className="scroll-mt-[calc(var(--header-h)+16px)]">
-      <SectionHeader id="hero-title" level={1} eyebrow="Hi, I'm Intan, an Applied Data Science student" lines={["Turning Raw Data", "Into Real"]} accent="Decisions" />
-      <Reveal as="p" className="mt-6 max-w-[60ch] text-[16.5px] leading-[1.7] text-muted md:text-lg">
-        I design data pipelines, train machine learning models and build dashboards that help people decide with confidence. I study Applied Data Science at Politeknik Elektronika Negeri Surabaya (PENS).
-      </Reveal>
+      <SectionHeader id="hero-title" level={1} size="sub" lines={["Hi, I'm Intan, an Applied Data Science"]} accent="student" />
 
       <Reveal className="mt-10 flex flex-wrap items-center justify-start gap-6 sm:justify-between">
         <a

@@ -21,7 +21,7 @@ export default function About() {
   const s = profile.socials;
   return (
     <section id="about" aria-labelledby="about-title" className="pt-24 xl:pt-30">
-      <SectionHeader id="about-title" eyebrow="About me" lines={["From Network", "Cables to Data"]} accent="Science" />
+      <SectionHeader id="about-title" size="sub" lines={["About"]} accent="Me" />
 
       <Reveal className={cn(cardClass, "mt-10 bg-linear-160 from-gray-300/10 to-white/[0.03]")}>
         <h3 className="text-[26px] leading-tight font-semibold md:text-[30px]">{profile.name}</h3>

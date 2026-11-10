@@ -134,25 +134,45 @@ export function Reveal({ as: Tag = "div", className, children, ref: outerRef, ..
   );
 }
 
-/* ---------- Section heading: eyebrow + three-line display title ---------- */
-export function SectionHeader({ id, eyebrow, lines, accent, level = 2 }) {
+/* ---------- Section heading ----------
+   size="display": optional eyebrow + three-line display title.
+   size="sub": the same fonts at subtitle size, on one wrapping line. */
+export function SectionHeader({ id, eyebrow, lines = [], accent, level = 2, size = "display" }) {
   const H = `h${level}`;
+  const sub = size === "sub";
   return (
     <>
-      <Reveal as="p" className="inline-flex items-center gap-2.5 text-lg font-medium text-blue-200 md:text-xl">
-        <Icon id="i-rose" className="h-7 w-[30px]" />
-        {eyebrow}
-      </Reveal>
+      {eyebrow && (
+        <Reveal as="p" className="inline-flex items-center gap-2.5 text-lg font-medium text-blue-200 md:text-xl">
+          <Icon id="i-rose" className="h-7 w-[30px]" />
+          {eyebrow}
+        </Reveal>
+      )}
       <Reveal
         as={H}
         id={id}
-        className="mt-4 text-[clamp(30px,8.6cqi,80px)] leading-[1.06] font-semibold tracking-[-0.01em] md:leading-[1.04]"
+        className={cn(
+          "font-semibold tracking-[-0.01em]",
+          sub
+            ? "max-w-[22ch] text-[clamp(28px,5cqi,46px)] leading-[1.15]"
+            : "text-[clamp(30px,8.6cqi,80px)] leading-[1.06] md:leading-[1.04]",
+          eyebrow && "mt-4",
+        )}
       >
-        <span className="block">{lines[0]}</span>
-        <span className="block pl-[0.4em] md:pl-[0.8em]">{lines[1]}</span>
-        <span className="block pl-[0.4em] md:pl-[0.8em]">
-          <span className="accent">{accent}</span>
-        </span>
+        {sub ? (
+          <>
+            {lines.join(" ")}
+            {accent && <> <span className="accent">{accent}</span></>}
+          </>
+        ) : (
+          <>
+            <span className="block">{lines[0]}</span>
+            <span className="block pl-[0.4em] md:pl-[0.8em]">{lines[1]}</span>
+            <span className="block pl-[0.4em] md:pl-[0.8em]">
+              <span className="accent">{accent}</span>
+            </span>
+          </>
+        )}
       </Reveal>
     </>
   );
