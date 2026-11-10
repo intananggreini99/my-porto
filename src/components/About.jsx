@@ -1,6 +1,6 @@
 import profile from "../data/profile";
 import { cn } from "../lib/utils";
-import { cardClass, Chip, IconTile, Reveal, SectionHeader, Socials } from "./ui";
+import { cardClass, Chip, Icon, IconTile, Reveal, Socials } from "./ui";
 
 function Timeline({ items, tone }) {
   return (
@@ -20,10 +20,11 @@ function Timeline({ items, tone }) {
 export default function About() {
   const s = profile.socials;
   return (
-    <section id="about" aria-labelledby="about-title" className="pt-24 xl:pt-30">
-      <SectionHeader id="about-title" size="sub" lines={["About"]} accent="Me" />
+    <section id="about" aria-labelledby="about-title" className="pt-12">
+      {/* No visible heading here; screen readers still get one. */}
+      <h2 id="about-title" className="sr-only">About me</h2>
 
-      <Reveal className={cn(cardClass, "mt-10 bg-linear-160 from-gray-300/10 to-white/[0.03]")}>
+      <Reveal className={cn(cardClass, "bg-linear-160 from-gray-300/10 to-white/[0.03]")}>
         <h3 className="text-[26px] leading-tight font-semibold md:text-[30px]">{profile.name}</h3>
         {profile.bio.map((p, i) => (
           <p key={i} className={cn("leading-[1.75] text-muted", i === 0 ? "mt-3.5" : "mt-3")}>{p}</p>
@@ -52,6 +53,20 @@ export default function About() {
           );
         })}
       </ul>
+
+      <Reveal
+        as="a"
+        href="#contact"
+        className={cn(
+          cardClass,
+          "group mt-6 flex flex-col items-center gap-5 border-blue-400/30 bg-linear-135 from-blue-700 via-blue-900 to-blue-950 px-5 py-10 text-center hover:border-gold-400 md:px-8 md:py-14",
+        )}
+      >
+        <span className="text-[clamp(30px,7cqi,64px)] leading-[1.1] font-semibold">Let's Work Together</span>
+        <span className="grid size-16 place-items-center rounded-full bg-white/12 text-[26px] transition duration-300 ease-soft group-hover:rotate-45 group-hover:bg-gold-400 group-hover:text-gray-950 md:size-20 md:text-[30px]">
+          <Icon id="i-arrow-up-right" />
+        </span>
+      </Reveal>
 
       <div className="mt-16 grid items-start gap-6 md:grid-cols-2">
         <div className="grid gap-6">

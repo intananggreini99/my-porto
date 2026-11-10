@@ -1,5 +1,5 @@
 import data from "../data/portfolio";
-import { cardClass, Icon, Reveal, SectionHeader } from "./ui";
+import { Icon, Reveal, SectionHeader } from "./ui";
 import { cn } from "../lib/utils";
 
 const avatars = [
@@ -45,20 +45,6 @@ export default function Hero() {
             <strong className="block font-semibold text-text">{count} projects</strong>in data, ML and BI
           </p>
         </div>
-      </Reveal>
-
-      <Reveal
-        as="a"
-        href="#contact"
-        className={cn(
-          cardClass,
-          "group mt-10 flex flex-col items-center gap-5 border-blue-400/30 bg-linear-135 from-blue-700 via-blue-900 to-blue-950 px-5 py-10 text-center hover:border-gold-400 md:px-8 md:py-14",
-        )}
-      >
-        <span className="text-[clamp(30px,7cqi,64px)] leading-[1.1] font-semibold">Let's Work Together</span>
-        <span className="grid size-16 place-items-center rounded-full bg-white/12 text-[26px] transition duration-300 ease-soft group-hover:rotate-45 group-hover:bg-gold-400 group-hover:text-gray-950 md:size-20 md:text-[30px]">
-          <Icon id="i-arrow-up-right" />
-        </span>
       </Reveal>
     </section>
   );
