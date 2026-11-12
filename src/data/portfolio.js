@@ -319,7 +319,7 @@ const portfolio = {
     },
     {
       tag: "Academic", year: "2024 to now", icon: "i-graduation-cap", tone: "gold",
-      title: "GPA 3.57 out of 4.00", org: "Applied Data Science, PENS",
+      title: "GPA 3.58 out of 4.00", org: "Applied Data Science, PENS",
       text: "Current grade point average in the Bachelor of Applied Data Science program at Politeknik Elektronika Negeri Surabaya."
     }
   ],

@@ -24,7 +24,7 @@ const profile = {
   },
 
   bio: [
-    "I'm a fifth-semester Applied Data Science student at Politeknik Elektronika Negeri Surabaya (PENS) with a GPA of 3.57 out of 4.00. My path started in computer networking at SMK Negeri 1 Kediri, where I installed wired and wireless networks, administered Debian, Ubuntu and Red Hat systems, and earned my MTCNA certification.",
+    "I'm a fifth-semester Applied Data Science student at Politeknik Elektronika Negeri Surabaya (PENS) with a GPA of 3.58 out of 4.00. My path started in computer networking at SMK Negeri 1 Kediri, where I installed wired and wireless networks, administered Debian, Ubuntu and Red Hat systems, and earned my MTCNA certification.",
     "Today I work across the data lifecycle: building ETL pipelines and star-schema warehouses, orchestrating workflows with Apache Airflow, training and tracking models with MLflow, and turning the results into dashboards that people can act on.",
   ],
 
@@ -42,7 +42,7 @@ const profile = {
   ],
 
   education: [
-    { when: "2024 to present", title: "Bachelor of Applied Data Science (D4)", where: "Politeknik Elektronika Negeri Surabaya (PENS)", note: "GPA 3.57 out of 4.00, fifth semester." },
+    { when: "2024 to present", title: "Bachelor of Applied Data Science (D4)", where: "Politeknik Elektronika Negeri Surabaya (PENS)", note: "GPA 3.58 out of 4.00, fifth semester." },
     { when: "2021 to 2024", title: "Computer Network and Telecommunication Engineering", where: "SMK Negeri 1 Kediri", note: "Average report grade 89 out of 100; one of the top five students in the major." },
   ],
 
