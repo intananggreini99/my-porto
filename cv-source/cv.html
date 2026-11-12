@@ -5,161 +5,135 @@
 <title>CV - Intan Dwi Anggreini</title>
 <meta name="author" content="Intan Dwi Anggreini">
 <style>
-  @font-face { font-family: "Figtree"; font-weight: 400; font-style: normal; src: url("fonts/figtree-latin-400-normal.woff2") format("woff2"); }
-  @font-face { font-family: "Figtree"; font-weight: 400; font-style: italic; src: url("fonts/figtree-latin-400-italic.woff2") format("woff2"); }
-  @font-face { font-family: "Figtree"; font-weight: 500; font-style: normal; src: url("fonts/figtree-latin-500-normal.woff2") format("woff2"); }
-  @font-face { font-family: "Figtree"; font-weight: 600; font-style: normal; src: url("fonts/figtree-latin-600-normal.woff2") format("woff2"); }
-  @font-face { font-family: "Figtree"; font-weight: 700; font-style: normal; src: url("fonts/figtree-latin-700-normal.woff2") format("woff2"); }
-
-  @page { size: A4; margin: 10.5mm 13mm 10mm 13mm; }
+  /* Harvard-style CV: one column, serif type, centred section headings with a rule.
+     Times New Roman on Windows; Liberation Serif / Tinos have the same letter widths. */
+  @page {
+    size: A4;
+    margin: 13mm 17mm 14mm 17mm;
+  }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body {
-    font-family: "Figtree", "Carlito", Arial, sans-serif;
-    font-size: 9.45pt;
-    line-height: 1.34;
-    color: #1d2226;
+    font-family: "Times New Roman", "Liberation Serif", Tinos, serif;
+    font-size: 10.5pt;
+    line-height: 1.2;
+    color: #000;
     font-variant-ligatures: none;
-    font-feature-settings: "liga" 0, "clig" 0, "calt" 0;
+    font-feature-settings: "liga" 0, "clig" 0;
   }
-  a { color: inherit; text-decoration: none; }
+  a { color: #0563c1; text-decoration: underline; text-underline-offset: 1.5pt; text-decoration-thickness: 0.5pt; }
 
   /* ---------- header ---------- */
-  header { text-align: center; padding-bottom: 7pt; border-bottom: 1.4pt solid #1d2226; }
-  h1 { font-size: 21pt; font-weight: 700; letter-spacing: 0.06em; line-height: 1.1; }
-  .headline { font-size: 10.5pt; font-weight: 600; color: #0b6466; margin-top: 3pt; }
-  .contact { font-size: 9pt; margin-top: 4pt; color: #30373c; }
-  .contact span + span::before { content: "|"; margin: 0 6pt; color: #9aa3a8; }
+  header { text-align: center; }
+  h1 { font-size: 18pt; font-weight: 700; line-height: 1.15; }
+  .contact { margin-top: 2pt; font-size: 10pt; line-height: 1.3; }
+  .contact .sep { margin: 0 3pt; }
+  .contact .item { white-space: nowrap; }
 
   /* ---------- sections ---------- */
-  section { margin-top: 8pt; }
+  section { margin-top: 9pt; }
   h2 {
-    font-size: 10.4pt; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
-    color: #1d2226; padding-bottom: 2.5pt; border-bottom: 0.8pt solid #b9c1c5; margin-bottom: 5pt;
+    text-align: center; font-size: 11.5pt; font-weight: 700; text-transform: uppercase;
+    padding-bottom: 1.5pt; border-bottom: 1.1pt solid #000; margin-bottom: 4.5pt;
     break-after: avoid;
   }
-  p.summary { text-align: left; }
+  p, li { text-align: justify; hyphens: none; }
 
-  .entry { break-inside: avoid; margin-bottom: 5pt; }
-  .entry:last-child { margin-bottom: 0; }
-  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
-  .title { font-weight: 700; font-size: 9.9pt; }
-  .right { font-weight: 600; white-space: nowrap; font-size: 9.2pt; color: #30373c; }
-  .sub { font-style: italic; color: #30373c; }
-  .sub .right { font-style: normal; font-weight: 500; }
-  .tech { font-size: 8.9pt; color: #30373c; margin-top: 1pt; }
-  .tech b { font-weight: 600; color: #1d2226; }
-  .link { font-size: 8.6pt; color: #0b6466; margin-top: 0.5pt; }
-  .link .lbl { color: #30373c; font-weight: 600; }
+  .entry { break-inside: avoid; margin-top: 4pt; }
+  .entry:first-of-type { margin-top: 0; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; }
+  .row > :first-child { text-align: left; }
+  .title { font-weight: 700; }
+  .right { white-space: nowrap; text-align: right; }
+  .meta { font-size: 10pt; }
+  .meta b { font-weight: 700; }
 
-  ul { margin: 2pt 0 0 0; padding-left: 11pt; }
-  li { margin-top: 1.2pt; }
-  li::marker { color: #0b6466; }
+  ul { padding-left: 17pt; margin-top: 0.5pt; }
+  li { margin-top: 0.8pt; padding-left: 2pt; }
 
-  .skills { display: grid; grid-template-columns: 100pt 1fr; row-gap: 1.6pt; column-gap: 8pt; }
-  .skills dt { font-weight: 700; }
-
-  .two-col { display: grid; grid-template-columns: 1.7fr 1fr; column-gap: 18pt; }
+  .line + .line { margin-top: 1.5pt; }
+  .more { margin-top: 4pt; }
+  .skills h3 { font-size: 10.5pt; font-weight: 700; margin-top: 2pt; }
+  .skills h3:first-child { margin-top: 0; }
+  .skills .lang { margin-top: 2pt; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>INTAN DWI ANGGREINI</h1>
-  <div class="headline">Applied Data Science Student | Data Engineering | Machine Learning | MLOps</div>
+  <h1>Intan Dwi Anggreini</h1>
   <div class="contact">
-    <span>Surabaya, East Java, Indonesia</span><span>+62 857-4946-1049</span><span><a href="mailto:d.intananggreini99@gmail.com">d.intananggreini99@gmail.com</a></span>
+    <span class="item">Surabaya, Indonesia</span><span class="sep">|</span><span class="item">Mobile : +62 857-4946-1049</span><span class="sep">|</span><span class="item">Email : <a href="mailto:d.intananggreini99@gmail.com">d.intananggreini99@gmail.com</a></span><span class="sep">|</span><span class="item">Portfolio : <a href="https://intananggreini99.web.id">intananggreini99.web.id</a></span>
   </div>
   <div class="contact">
-    <span><a href="https://intananggreini99.web.id">intananggreini99.web.id</a></span><span><a href="https://github.com/intananggreini99">github.com/intananggreini99</a></span><span><a href="https://www.linkedin.com/in/intan-dwi-anggreini-4040402b1/">linkedin.com/in/intan-dwi-anggreini-4040402b1</a></span>
+    <span class="item">GitHub : <a href="https://github.com/intananggreini99">github.com/intananggreini99</a></span><span class="sep">|</span><span class="item">LinkedIn : <a href="https://www.linkedin.com/in/intan-dwi-anggreini-4040402b1/">linkedin.com/in/intan-dwi-anggreini-4040402b1</a></span>
   </div>
 </header>
 
 <section>
-  <h2>Summary</h2>
-  <p class="summary">Applied Data Science student (5th semester) at Politeknik Elektronika Negeri Surabaya (PENS) who builds end-to-end data and machine learning systems: an MLOps credit risk platform (FastAPI, MLflow, DVC, Docker), a star-schema data warehouse with UMAP-HDBSCAN risk segmentation, fault-tolerant Apache Airflow pipelines and a Spark, HDFS and Hive big data workflow. Communicates insights through Power BI, Tableau, Grafana and D3.js dashboards, with a networking and Linux administration foundation (MTCNA certified).</p>
+  <h2>Profile</h2>
+  <p>An Applied Data Science student at the Electronic Engineering Polytechnic Institute of Surabaya (PENS) with a computer networking background, building end-to-end data and machine learning systems: ETL pipelines and star-schema data warehouses, Apache Airflow and Spark workflows, and an MLOps credit risk platform with FastAPI, MLflow, DVC and Docker. Interested in data engineering, machine learning and MLOps.</p>
 </section>
 
 <section>
   <h2>Education</h2>
   <div class="entry">
-    <div class="row"><span class="title">Electronic Engineering Polytechnic Institute of Surabaya (PENS)</span><span class="right">2024 - Present</span></div>
-    <div class="row sub"><span>Bachelor of Applied Data Science (D4 Sains Data Terapan); GPA 3.58/4.00</span><span class="right">Surabaya, Indonesia</span></div>
+    <div class="row"><span class="title">Electronic Engineering Polytechnic Institute of Surabaya (PENS)</span><span class="right">2024 &ndash; Current</span></div>
+    <p>Bachelor of Applied Data Science (D4 Sains Data Terapan), fifth semester (GPA: 3.58/4.00).</p>
   </div>
   <div class="entry">
-    <div class="row"><span class="title">SMK Negeri 1 Kediri (Kediri Vocational High School 1)</span><span class="right">2021 - 2024</span></div>
-    <div class="row sub"><span>Computer Network and Telecommunication Engineering</span><span class="right">Kediri, Indonesia</span></div>
-    <ul>
-      <li>Average report grade 89/100; ranked among the top 5 students in the major throughout the three-year program.</li>
-    </ul>
+    <div class="row"><span class="title">SMK Negeri 1 Kediri (Kediri Vocational High School 1)</span><span class="right">2021 &ndash; 2024</span></div>
+    <p>Vocational High School Diploma in Computer Network and Telecommunication Engineering (average report grade 89/100). Ranked among the top 5 students in the major throughout the three-year program.</p>
   </div>
-</section>
-
-<section>
-  <h2>Technical Skills</h2>
-  <dl class="skills">
-    <dt>Programming</dt><dd>Python, SQL, R, JavaScript, PHP, Rust, Kotlin</dd>
-    <dt>Machine Learning</dt><dd>scikit-learn, Spark MLlib, Deep Learning, Computer Vision, K-Means, UMAP, HDBSCAN</dd>
-    <dt>MLOps and DevOps</dt><dd>MLflow, DVC, Docker, Docker Compose, Git</dd>
-    <dt>Data Engineering</dt><dd>Apache Airflow, Apache Spark (PySpark), HDFS, Apache Hive, Apache Kafka, Debezium, Pentaho Data Integration, ETL, Data Warehousing (Star Schema)</dd>
-    <dt>Databases</dt><dd>PostgreSQL, MySQL, MongoDB</dd>
-    <dt>Web and APIs</dt><dd>FastAPI, Flask, REST API, React, PHP, Bootstrap, Leaflet.js</dd>
-    <dt>Data Visualization</dt><dd>Power BI, Tableau, Grafana, Looker Studio (Google Data Studio), D3.js, Kibana</dd>
-    <dt>Systems and Network</dt><dd>Linux (Debian, Ubuntu, Red Hat), MikroTik, Cisco, wired and wireless network installation</dd>
-    <dt>Soft Skills</dt><dd>Problem Solving, Critical Thinking, Communication, Teamwork, Leadership</dd>
-  </dl>
 </section>
 
 <section>
   <h2>Projects</h2>
 
   <div class="entry">
-    <div class="row"><span class="title">RiskFinder - Machine Learning Credit Risk Analysis Platform</span><span class="right">Team Lead, Full-Stack and ML Engineer</span></div>
-    <div class="tech"><b>Tech:</b> Python, FastAPI, React, PostgreSQL, MLflow, DVC, Docker</div>
-    <div class="link"><a href="https://github.com/intananggreini99/riskfinder-project">github.com/intananggreini99/riskfinder-project</a></div>
+    <div class="row"><span class="title">RiskFinder &ndash; Machine Learning Credit Risk Analysis Platform</span><span class="right">Team Lead, Full-Stack and ML Engineer</span></div>
+    <div class="meta">Link GitHub : <a href="https://github.com/intananggreini99/riskfinder-project">github.com/intananggreini99/riskfinder-project</a></div>
+    <div class="meta"><b>Tech Stack :</b> Python, FastAPI, React, PostgreSQL, MLflow, DVC, Docker</div>
     <ul>
-      <li>Led a team building a credit risk system that predicts borrower default to help banks, P2P lending and fintech platforms make faster, more objective lending decisions.</li>
-      <li>Built the training pipeline (KNN imputation, outlier capping, feature selection, imbalance handling, model comparison, hyperparameter tuning), tracking experiments in MLflow and versioning data and artifacts with DVC.</li>
-      <li>Developed a FastAPI and React app with JWT role-based access for training, model registry and activation, risk prediction and monitoring (ROC-AUC, confusion matrix, prediction history), deployed with Docker and PostgreSQL.</li>
+      <li>Led a team building a credit risk platform that predicts borrower default, with a training pipeline (KNN imputation, outlier capping, feature selection, imbalance handling, model comparison, hyperparameter tuning) tracked in MLflow and versioned with DVC.</li>
+      <li>Developed a FastAPI and React app with JWT role-based access for model training, registry and activation, risk prediction and monitoring (ROC-AUC, confusion matrix, prediction history), deployed with Docker and PostgreSQL.</li>
     </ul>
   </div>
 
   <div class="entry">
     <div class="row"><span class="title">Credit Risk Segmentation and Anomaly Detection with UMAP-HDBSCAN on a Data Warehouse</span><span class="right">Personal Project</span></div>
-    <div class="tech"><b>Tech:</b> Python, scikit-learn, UMAP, HDBSCAN, PostgreSQL, Pentaho Data Integration, PHP, D3.js</div>
-    <div class="link"><a href="https://github.com/intananggreini99/UMAP-HDBSCAN_RiskSegmentation_and_CreditAnomalyDetection">github.com/intananggreini99/UMAP-HDBSCAN_RiskSegmentation_and_CreditAnomalyDetection</a></div>
+    <div class="meta">Link GitHub : <a href="https://github.com/intananggreini99/UMAP-HDBSCAN_RiskSegmentation_and_CreditAnomalyDetection">github.com/intananggreini99/UMAP-HDBSCAN_RiskSegmentation_and_CreditAnomalyDetection</a></div>
+    <div class="meta"><b>Tech Stack :</b> Python, scikit-learn, UMAP, HDBSCAN, PostgreSQL, Pentaho Data Integration, PHP, D3.js</div>
     <ul>
-      <li>Built an ETL pipeline (Pentaho Data Integration and SQL) loading 1,000 loan applications from an operational data store into a PostgreSQL star schema (8 dimension and 2 fact tables).</li>
-      <li>Combined UMAP (10 financial features) with HDBSCAN and benchmarked it against 7 other algorithms on 7 prioritized metrics; it ranked first (Silhouette 0.781, Davies-Bouldin 0.34) and isolated 37.9% of applications as anomalies.</li>
-      <li>Derived 7 tiered risk segments, including a "Hidden Prime" segment fit for automatic approval, shown in an interactive PHP and D3.js dashboard (25% default rate, 43% average ROI, IDR 83.78 billion total profit).</li>
+      <li>Built an ETL pipeline (Pentaho Data Integration, SQL) loading 1,000 loan applications from an operational data store into a PostgreSQL star schema with 8 dimension and 2 fact tables.</li>
+      <li>Benchmarked UMAP-HDBSCAN against 7 other algorithms on 7 prioritized metrics; it ranked first (Silhouette 0.781, Davies-Bouldin 0.34), isolated 37.9% of applications as anomalies and produced 7 tiered risk segments in an interactive PHP and D3.js dashboard.</li>
     </ul>
   </div>
 
   <div class="entry">
     <div class="row"><span class="title">Airflow Weather Data Pipeline with Observability and Alerting</span><span class="right">Team Project</span></div>
-    <div class="tech"><b>Tech:</b> Apache Airflow 3, Python, PostgreSQL, Redis, Celery, Docker Compose, Open-Meteo API</div>
-    <div class="link"><a href="https://github.com/mudrik696/airflow-project">github.com/mudrik696/airflow-project</a></div>
+    <div class="meta">Link GitHub : <a href="https://github.com/mudrik696/airflow-project">github.com/mudrik696/airflow-project</a></div>
+    <div class="meta"><b>Tech Stack :</b> Apache Airflow 3, Python, PostgreSQL, Redis, Celery, Docker Compose, Open-Meteo API</div>
     <ul>
-      <li>Co-developed a weather data pipeline for Surabaya on Apache Airflow with 9 DAGs covering extraction, transformation, branching data-quality checks and cross-DAG orchestration.</li>
-      <li>Four layers of failure handling: automatic retries, centralized logging to PostgreSQL, SMTP email alerts and a custom UI to investigate and re-run failed tasks; runs on Docker Compose (CeleryExecutor, Redis).</li>
+      <li>Co-developed a weather data pipeline for Surabaya with 9 Apache Airflow DAGs covering extraction, transformation, branching data-quality checks and cross-DAG orchestration.</li>
+      <li>Added four layers of failure handling: automatic retries, centralized logging to PostgreSQL, SMTP email alerts and a custom UI to investigate and re-run failed tasks, running on Docker Compose (CeleryExecutor, Redis).</li>
     </ul>
   </div>
 
   <div class="entry">
     <div class="row"><span class="title">Apple Leaf Disease Classification on a Big Data Stack</span><span class="right">Big Data Project</span></div>
-    <div class="tech"><b>Tech:</b> PySpark, Spark MLlib, scikit-learn, scikit-image, HDFS, Apache Hive, PostgreSQL, Docker Compose</div>
-    <div class="link"><a href="https://github.com/intananggreini99/AppleDiseaseClassification">github.com/intananggreini99/AppleDiseaseClassification</a></div>
+    <div class="meta">Link GitHub : <a href="https://github.com/intananggreini99/AppleDiseaseClassification">github.com/intananggreini99/AppleDiseaseClassification</a></div>
+    <div class="meta"><b>Tech Stack :</b> PySpark, Spark MLlib, scikit-learn, scikit-image, HDFS, Apache Hive, PostgreSQL, Docker Compose</div>
     <ul>
-      <li>Set up a 9-container Docker environment (Spark standalone cluster, HDFS, Hive metastore and HiveServer2, PostgreSQL); ingested leaf images into HDFS and extracted features in parallel with Spark UDFs and scikit-image into Parquet, Hive and PostgreSQL tables.</li>
+      <li>Set up a 9-container environment (Spark standalone cluster, HDFS, Hive metastore and HiveServer2, PostgreSQL) and extracted leaf image features in parallel with Spark UDFs into Parquet, Hive and PostgreSQL tables.</li>
       <li>Benchmarked Spark MLlib against scikit-learn on identical features, comparing training time and evaluation metrics, with per-stage durations logged to PostgreSQL.</li>
     </ul>
   </div>
 
   <div class="entry">
     <div class="row"><span class="title">COVID-19 Distribution Dashboard for Indonesia</span><span class="right">Web Dashboard</span></div>
-    <div class="tech"><b>Tech:</b> Python, K-Means, PHP, MySQL, D3.js, Leaflet, Grafana</div>
-    <div class="link"><a href="https://github.com/intananggreini99/Dasboard_Covid19_PHP-D3JS">github.com/intananggreini99/Dasboard_Covid19_PHP-D3JS</a></div>
+    <div class="meta">Link GitHub : <a href="https://github.com/intananggreini99/Dasboard_Covid19_PHP-D3JS">github.com/intananggreini99/Dasboard_Covid19_PHP-D3JS</a></div>
+    <div class="meta"><b>Tech Stack :</b> Python, K-Means, PHP, MySQL, D3.js, Leaflet, Grafana</div>
     <ul>
       <li>Built an interactive dashboard of COVID-19 cases across 34 provinces (3,493 records, March to June 2020) with PHP and MySQL JSON endpoints, D3.js charts and a Leaflet choropleth map; grouped provinces into 4 risk levels with K-Means and recreated the view in Grafana.</li>
     </ul>
@@ -167,8 +141,8 @@
 
   <div class="entry">
     <div class="row"><span class="title">School Management Information System, TKJ Department of SMKN 1 Kediri</span><span class="right">Personal Project</span></div>
-    <div class="tech"><b>Tech:</b> PHP 8, MySQL 8, Bootstrap 5, JavaScript, Docker Compose</div>
-    <div class="link"><a href="https://github.com/intananggreini99/MIS_WebDinamis_TKJSMEKSA">github.com/intananggreini99/MIS_WebDinamis_TKJSMEKSA</a></div>
+    <div class="meta">Link GitHub : <a href="https://github.com/intananggreini99/MIS_WebDinamis_TKJSMEKSA">github.com/intananggreini99/MIS_WebDinamis_TKJSMEKSA</a></div>
+    <div class="meta"><b>Tech Stack :</b> PHP 8, MySQL 8, Bootstrap 5, JavaScript, Docker Compose</div>
     <ul>
       <li>Developed a web MIS with session login and role-based access (admin, teacher, student) to manage users, students, teachers, subjects and the school agenda, including photo uploads; containerized Apache, PHP, MySQL and phpMyAdmin with Docker Compose.</li>
     </ul>
@@ -176,49 +150,65 @@
 
   <div class="entry">
     <div class="row"><span class="title">Business Intelligence Dashboards</span><span class="right">Dashboards</span></div>
-    <div class="tech"><b>Tech:</b> Power BI, Tableau, Grafana, Looker Studio</div>
-    <div class="link"><span class="lbl">Power BI:</span> <a href="https://app.powerbi.com/Redirect?action=OpenReport&amp;appId=26c7d70d-511e-444e-9073-391f544919a1&amp;reportObjectId=2bad3ee6-d929-42c2-b205-a285a61577f0&amp;ctid=51d790d5-befb-484e-86c6-d17b64727624&amp;reportPage=59cef2a137caa7d6827a&amp;pbi_source=appShareLink&amp;portalSessionId=6b5cce41-9e14-4b57-83a9-2b9e9089ac90">Phi Minimart report</a> &nbsp;|&nbsp; <span class="lbl">Looker Studio:</span> <a href="https://datastudio.google.com/reporting/e8fb4994-7a8c-46a9-9504-290878480b96/page/6FeeF">Toko Kita report</a> &nbsp;|&nbsp; <span class="lbl">Grafana:</span> <a href="https://github.com/intananggreini99/grafanaDashboard.git">github.com/intananggreini99/grafanaDashboard</a></div>
-    <div class="link"><span class="lbl">Tableau:</span> <a href="https://public.tableau.com/app/profile/intan.dwi.anggreini">public.tableau.com/app/profile/intan.dwi.anggreini</a></div>
+    <div class="meta">Link Dashboards : <a href="https://app.powerbi.com/Redirect?action=OpenReport&amp;appId=26c7d70d-511e-444e-9073-391f544919a1&amp;reportObjectId=2bad3ee6-d929-42c2-b205-a285a61577f0&amp;ctid=51d790d5-befb-484e-86c6-d17b64727624&amp;reportPage=59cef2a137caa7d6827a&amp;pbi_source=appShareLink&amp;portalSessionId=6b5cce41-9e14-4b57-83a9-2b9e9089ac90">Power BI</a> | <a href="https://datastudio.google.com/reporting/e8fb4994-7a8c-46a9-9504-290878480b96/page/6FeeF">Looker Studio</a> | <a href="https://github.com/intananggreini99/grafanaDashboard.git">Grafana</a> | <a href="https://public.tableau.com/app/profile/intan.dwi.anggreini">Tableau Public</a></div>
+    <div class="meta"><b>Tech Stack :</b> Power BI, Tableau, Grafana, Looker Studio</div>
     <ul>
       <li>Designed sales and regional dashboards: Phi Minimart sales performance (Power BI and Grafana), Toko Kita sales and profit report (Looker Studio), and the distribution of high schools, universities and MSMEs in Kediri City (Tableau Public).</li>
+    </ul>
+  </div>
+
+  <p class="more">Link Project Experiences : <a href="https://intananggreini99.web.id/#projects">intananggreini99.web.id/#projects</a></p>
+</section>
+
+<section>
+  <h2>Professional &amp; Work Experience</h2>
+  <div class="entry">
+    <div class="row"><span class="title">Staff, Computer Center (Puskom) and Personnel (Kepegawaian) Divisions &ndash; Politeknik Negeri Malang, PSDKU Kediri</span><span class="right">June 2023 &ndash; November 2023</span></div>
+    <ul>
+      <li>Completed a six-month vocational internship (PKL) supporting the campus's day-to-day administrative operations.</li>
     </ul>
   </div>
 </section>
 
 <section>
-  <h2>Experience</h2>
+  <h2>Certification</h2>
+  <div class="row line"><span>MikroTik Certified Network Associate (MTCNA) &ndash; MikroTik</span><span class="right">2024</span></div>
+</section>
+
+<section>
+  <h2>Organisation</h2>
   <div class="entry">
-    <div class="row"><span class="title">Staff, Human Capital Division - IEEE Student Branch PENS</span><span class="right">2026 - Present</span></div>
-    <div class="row sub"><span>Politeknik Elektronika Negeri Surabaya</span><span class="right">Surabaya, Indonesia</span></div>
+    <div class="row"><span class="title">Staff, Human Capital Division &ndash; IEEE Student Branch PENS</span><span class="right">2026 &ndash; Current</span></div>
     <ul>
       <li>Support member development and welfare programs for the student branch, and presented the division's role and programs to members.</li>
     </ul>
   </div>
   <div class="entry">
-    <div class="row"><span class="title">Guide (Pemandu) - LKMM PENS 2025, Student Management Skills Training</span><span class="right">2025 - Present</span></div>
-    <div class="row sub"><span>Politeknik Elektronika Negeri Surabaya</span><span class="right">Surabaya, Indonesia</span></div>
+    <div class="row"><span class="title">Guide (Pemandu) &ndash; LKMM PENS 2025, Student Management Skills Training</span><span class="right">2025 &ndash; Current</span></div>
     <ul>
       <li>Facilitate management and leadership training sessions for first-year students: deliver material, lead class sessions and collect participant feedback.</li>
     </ul>
   </div>
-  <div class="entry">
-    <div class="row"><span class="title">Staff, Computer Center (Puskom) and Personnel (Kepegawaian) divisions - Politeknik Negeri Malang, PSDKU Kediri</span><span class="right">Jun 2023 - Nov 2023</span></div>
-    <div class="row sub"><span>Vocational internship (PKL)</span><span class="right">Kediri, Indonesia</span></div>
-    <ul>
-      <li>Completed a six-month vocational internship supporting the campus's day-to-day administrative operations.</li>
-    </ul>
-  </div>
 </section>
 
-<section class="two-col">
-  <div>
-    <h2>Certification</h2>
-    <div class="row"><span><b>MikroTik Certified Network Associate (MTCNA)</b>, MikroTik</span><span class="right">2024</span></div>
-  </div>
-  <div>
-    <h2>Languages</h2>
-    <p>Indonesian, English</p>
-  </div>
+<section class="skills">
+  <h2>Skills</h2>
+  <h3>Technical Skills</h3>
+  <ul>
+    <li><b>Programming :</b> Python, SQL, R, JavaScript, PHP, Rust, Kotlin</li>
+    <li><b>AI :</b> Machine Learning, Deep Learning, Computer Vision</li>
+    <li><b>MLOps and DevOps :</b> MLflow, DVC, Docker, Docker Compose, Git</li>
+    <li><b>Data Engineering :</b> Apache Airflow, Apache Spark (PySpark), HDFS, Apache Hive, Apache Kafka, Debezium, Pentaho Data Integration, ETL, Data Warehousing (Star Schema)</li>
+    <li><b>Databases :</b> PostgreSQL, MySQL, MongoDB</li>
+    <li><b>Web and APIs :</b> FastAPI, Flask, REST API, React, PHP, Bootstrap, Leaflet.js</li>
+    <li><b>Data Visualization :</b> Power BI, Tableau, Grafana, Looker Studio (Google Data Studio), D3.js, Kibana</li>
+    <li><b>Systems and Network :</b> Linux (Debian, Ubuntu, Red Hat), MikroTik, Cisco, wired and wireless network installation</li>
+  </ul>
+  <h3>Soft Skills</h3>
+  <ul>
+    <li>Problem Solving, Critical Thinking, Communication, Teamwork, Leadership</li>
+  </ul>
+  <p class="lang"><b>Languages :</b> Indonesian, English</p>
 </section>
 
 </body>

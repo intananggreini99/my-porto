@@ -30,7 +30,7 @@ const portfolio = {
   /* ---------- Full toolbox (level shown when known) ---------- */
   toolbox: [
     { title: "Programming languages", level: "Advanced", items: ["Python", "R", "Rust", "SQL"] },
-    { title: "Machine learning and AI", level: "Basic to intermediate", items: ["Machine Learning", "Deep Learning", "Computer Vision", "scikit-learn", "Spark MLlib"] },
+    { title: "AI", level: "Basic to intermediate", items: ["Machine Learning", "Deep Learning", "Computer Vision"] },
     { title: "Web and mobile", level: "Intermediate", items: ["PHP", "React", "JavaScript", "Flask", "FastAPI", "REST API", "Kotlin"] },
     { title: "Tools and platforms", level: "Intermediate", items: ["Git", "Docker", "Docker Compose", "MLflow", "DVC"] },
     { title: "Data architecture", items: ["Apache Airflow", "Apache Spark", "HDFS", "Apache Hive", "Apache Kafka", "Debezium", "Pentaho Data Integration"] },
