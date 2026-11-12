@@ -14,7 +14,8 @@ export default function Hero() {
     <section id="home" aria-labelledby="hero-title" className="scroll-mt-[calc(var(--header-h)+16px)]">
       <SectionHeader id="hero-title" level={1} size="sub" lines={["Hi, I'm Intan, an Applied Data Science"]} accent="student" />
 
-      <Reveal className="mt-10 flex flex-wrap items-center justify-start gap-6 sm:justify-between">
+      {/* One row at every width; on phones the project count text sits under the avatars so both fit. */}
+      <Reveal className="mt-10 flex items-center justify-between gap-4 sm:gap-6">
         <a
           href="#projects"
           aria-label="Explore my projects • Data • ML • MLOps •"
@@ -30,18 +31,18 @@ export default function Hero() {
             <Icon id="i-arrow-up-right" />
           </span>
         </a>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col items-start gap-2.5 sm:flex-row sm:items-center sm:gap-4">
           <div className="flex" aria-hidden="true">
             {avatars.map((a, i) => (
-              <span key={a.icon} className={cn("grid size-12 place-items-center rounded-full border-2 border-gray-900 bg-gray-800 text-[22px] shadow-[0_0_0_1px_var(--color-line)] md:size-14 md:text-[26px]", i > 0 && "-ml-3.5", a.color)}>
+              <span key={a.icon} className={cn("grid size-11 place-items-center rounded-full border-2 border-gray-900 bg-gray-800 text-xl shadow-[0_0_0_1px_var(--color-line)] sm:size-12 sm:text-[22px] md:size-14 md:text-[26px]", i > 0 && "-ml-3 sm:-ml-3.5", a.color)}>
                 <Icon id={a.icon} />
               </span>
             ))}
-            <span className="-ml-3.5 grid size-12 place-items-center rounded-full border-2 border-gray-900 bg-gold-400 text-lg font-bold text-gray-950 shadow-[0_0_0_1px_var(--color-line)] md:size-14">
+            <span className="-ml-3 grid size-11 place-items-center rounded-full border-2 border-gray-900 bg-gold-400 text-lg font-bold text-gray-950 shadow-[0_0_0_1px_var(--color-line)] sm:-ml-3.5 sm:size-12 md:size-14">
               {count}
             </span>
           </div>
-          <p className="leading-snug text-muted">
+          <p className="text-[15px] leading-snug text-muted sm:text-base">
             <strong className="block font-semibold text-text">{count} projects</strong>in data, ML and BI
           </p>
         </div>
