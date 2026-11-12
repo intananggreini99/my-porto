@@ -1,6 +1,6 @@
 import profile from "../data/profile";
 import { cn } from "../lib/utils";
-import { cardClass, Chip, Icon, IconTile, Reveal, Socials } from "./ui";
+import { cardClass, Icon, IconTile, Reveal, Socials } from "./ui";
 
 function Timeline({ items, tone }) {
   return (
@@ -70,23 +70,14 @@ export default function About() {
 
       <div className="mt-16 grid items-start gap-6 md:grid-cols-2">
         <div className="grid gap-6">
-          <Reveal as="h3" className="text-[28px] leading-tight font-semibold md:text-[34px]">Experience</Reveal>
-          <Timeline items={profile.experience} tone="blue" />
+          <Reveal as="h3" className="text-[28px] leading-tight font-semibold md:text-[34px]">Education</Reveal>
+          <Timeline items={profile.education} tone="gold" />
+        </div>
+        {/* Top padding lines the card up with the timeline beside the Education heading. */}
+        <div className="md:pt-[66px]">
           <Reveal className={cn(cardClass, "bg-linear-160 from-gold-400/15 to-white/[0.035] text-center")}>
             <h3 className="text-2xl font-semibold">Stay connected</h3>
             <Socials items={[s.linkedin, s.github, s.instagram, s.whatsapp, s.tableau]} className="mt-4 gap-2 sm:gap-2.5" linkClassName="size-11 sm:size-12" />
-          </Reveal>
-        </div>
-        <div className="grid gap-6">
-          <Reveal as="h3" className="text-[28px] leading-tight font-semibold md:text-[34px]">Education</Reveal>
-          <Timeline items={profile.education} tone="gold" />
-          <Reveal className={cn(cardClass, "bg-linear-160 from-blue-600/20 to-white/[0.035]")}>
-            <h3 className="text-2xl font-semibold">Languages</h3>
-            <ul className="mt-3.5 flex flex-wrap gap-2">
-              {profile.languages.map((l) => (
-                <Chip as="li" key={l} className="border-blue-400/30 bg-blue-600/20">{l}</Chip>
-              ))}
-            </ul>
           </Reveal>
         </div>
       </div>

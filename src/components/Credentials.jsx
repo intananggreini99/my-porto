@@ -6,7 +6,7 @@ export default function Credentials() {
   const n = data.achievements.length;
   return (
     <section id="credentials" aria-labelledby="credentials-title" className="pt-24 xl:pt-30">
-      <SectionHeader id="credentials-title" eyebrow="Credentials" lines={["Certified Skills,", "Strong Academic"]} accent="Record" />
+      <SectionHeader id="credentials-title" size="sub" lines={["Certified Skills & Academic"]} accent="Record" />
       <ul className="mt-14 grid gap-6 md:grid-cols-2">
         {data.achievements.map((a, i) => {
           const gold = a.tone === "gold";

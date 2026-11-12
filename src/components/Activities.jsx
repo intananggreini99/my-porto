@@ -12,7 +12,7 @@ export default function Activities({ onOpen }) {
 
   return (
     <section id="activities" aria-labelledby="activities-title" className="pt-24 xl:pt-30">
-      <SectionHeader id="activities-title" eyebrow="Activities" lines={["Beyond the Code,", "Leading and"]} accent="Guiding" />
+      <SectionHeader id="activities-title" size="sub" lines={["My"]} accent="Experience" />
       <ul className="mt-14 grid gap-x-6 gap-y-10 md:grid-cols-2 md:gap-y-8">
         {data.activities.map((a, i) => {
           const featured = i === 0;

@@ -60,7 +60,7 @@ export default function Projects({ onOpen }) {
 
   return (
     <section id="projects" aria-labelledby="projects-title" className="pt-24 xl:pt-30">
-      <SectionHeader id="projects-title" eyebrow="My portfolio" lines={["Data Projects", "With Real"]} accent="Results" />
+      <SectionHeader id="projects-title" size="sub" lines={["My Projects"]} accent="Portfolio" />
 
       <div role="group" aria-label="Filter projects by category" className="-mx-[var(--gutter)] mt-12 flex gap-2.5 overflow-x-auto px-[var(--gutter)] pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [scrollbar-width:none]">
         {data.filters.map((f) => {
